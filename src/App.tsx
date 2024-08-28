@@ -13,7 +13,12 @@ function App() {
 
     return (
         <>
-            <h1>Testing server initialisation and api fetching</h1>
+            <h1 className="text-5xl text-cyan-400">
+                Testing server initialisation and api fetching
+            </h1>
+            // Tailwind CSS / daisyUi button //
+            <br></br>
+            <button className="btn btn-primary">Button</button>
             <div>
                 <h2>Fetched Data:</h2>
                 {data ? (
