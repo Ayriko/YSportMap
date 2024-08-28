@@ -5,7 +5,7 @@ function App() {
     const [data, setData] = useState(null)
 
     useEffect(() => {
-        fetch('http://localhost:3000/')
+        fetch('https://backend-production-7d38.up.railway.app/api/v1/equipments')
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error('Error:', error))
