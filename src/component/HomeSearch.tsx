@@ -40,11 +40,9 @@ function HomeSearch(): React.JSX.Element {
 
     const handleSearchClick = async () => {
         try {
-            const result = await client.getEquipmentsFiltered(filters);
-
+            const result = await client.getEquipmentsFiltered(filters, 1);
             if (result) {
-                console.log(result)
-                navigate('/result');
+                navigate('/result', {state: [result, filters]});
             } else {
                 console.error('No data returned from the API.');
             }
@@ -82,6 +80,7 @@ function HomeSearch(): React.JSX.Element {
                                     className="max-w-full w-full mx-2"
                                     placeholder="Entrer le nom d'une commune, le nom de l'installation, l'activité..."
                                     name="global_search"
+                                    autoComplete={"off"}
                                     value={filters.global_search}
                                     onChange={handleFilterChange}
                                 />
