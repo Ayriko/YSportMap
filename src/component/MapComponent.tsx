@@ -1,6 +1,6 @@
 import React from 'react';
 import "leaflet/dist/leaflet.css";
-import {MapContainer, Marker, Popup, TileLayer, useMap} from 'react-leaflet'
+import {MapContainer, TileLayer} from 'react-leaflet'
 
 function MapComponent() : React.JSX.Element {
     //limiter la taille max ici, juste afficher cluster et bloquer zoom / message conseil ?
