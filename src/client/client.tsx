@@ -1,8 +1,10 @@
 const url = import.meta.env.VITE_API_URL;
+import { Filter } from '../types/filter.ts';
 
-const getEquipments = async () => {
+const getEquipmentsFiltered = async (filters: Filter) => {
     try {
-        const response = await fetch(`${url}/equipments`, {
+        const query = new URLSearchParams(filters).toString();
+        const response = await fetch(`${url}/equipments?${query}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -16,5 +18,5 @@ const getEquipments = async () => {
 };
 
 export default {
-    getEquipments
+    getEquipmentsFiltered
 };

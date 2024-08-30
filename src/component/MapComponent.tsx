@@ -23,7 +23,7 @@ function MapComponent() : React.JSX.Element {
     }, [location]);
 
     return (
-        <MapContainer center={location} zoom={7} scrollWheelZoom={false} zoomControl={false}>
+        <MapContainer center={location} zoom={5} scrollWheelZoom={false} zoomControl={false}>
             <ChangeView center={location} />
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -10,15 +10,10 @@ export type Equipment = {
     inst_part_type: string;
     inst_acc_handi_type: string[];
     inst_trans_type: string[];
-    inst_hs_bool: string;
     equip_numero: string;
     equip_nom: string;
     equip_type_name: string;
     equip_type_famille: string;
-    coordonnees: {
-        lon: number;
-        lat: number;
-    };
     equip_x: number;
     equip_y: number;
     equip_eclair: string;
