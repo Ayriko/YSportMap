@@ -17,14 +17,14 @@ function HomeSearch(): React.JSX.Element {
                             <input type="submit" value="Chercher" className="btn btn-outline btn-primary btn-sm"/>
                         </label>
                         <div className="collapse collapse-plus">
-                            <input type="radio" name="my-accordion-3"/>
+                            <input type="radio" name="my-accordion-3" defaultChecked/>
                             <div className="collapse-title text-xl font-medium">Activités</div>
                             <div className="collapse-content">
                                 <p>hello</p>
                             </div>
                         </div>
                         <div className="collapse collapse-plus">
-                            <input type="radio" name="my-accordion-3" defaultChecked/>
+                            <input type="radio" name="my-accordion-3"/>
                             <div className="collapse-title text-xl font-medium">Locations</div>
                             <div className="collapse-content">
                                 <p>hello</p>
