@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Equipment} from "../type/equipment.ts";
+import {Equipment} from "../types/equipment.ts";
 import client from "../client/client.tsx";
 
 function DetailPage() : React.JSX.Element {
