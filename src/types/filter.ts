@@ -11,4 +11,5 @@ export type Filter = {
     equip_gest_type: string;
     dep_nom: string;
     reg_nom: string;
+    user_location: string;
 };

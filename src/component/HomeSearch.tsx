@@ -20,6 +20,7 @@ function HomeSearch(): React.JSX.Element {
         equip_gest_type: '',
         dep_nom: '',
         reg_nom: '',
+        user_location: ''
     };
     const [filters, setFilters] = useState<Filter>(initialFilters);
 
@@ -29,6 +30,7 @@ function HomeSearch(): React.JSX.Element {
     const [checkedSaison, setCheckedSaison] = useState(false);
     const [checkedSanit, setCheckedSanit] = useState(false);
     const [checkedDouche, setCheckedDouche] = useState(false);
+    const [checkedLocation, setCheckedLocation] = useState(false);
 
     const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -51,6 +53,26 @@ function HomeSearch(): React.JSX.Element {
         }
     };
 
+    const handleLocationToggle = () => {
+        if (checkedLocation) {
+            filters.user_location='';
+        } else {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        filters.user_location=[position.coords.latitude, position.coords.longitude].toString();
+                    },
+                    (error) => {
+                        console.error("Error fetching location: ", error);
+                    }
+                );
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+            }
+        }
+        setCheckedLocation(!checkedLocation);
+    };
+
     const handleResetClick = () => {
         setFilters(initialFilters);
         setCheckedAccHandi(false);
@@ -59,6 +81,7 @@ function HomeSearch(): React.JSX.Element {
         setCheckedSaison(false);
         setCheckedSanit(false);
         setCheckedDouche(false);
+        setCheckedLocation(false);
     };
 
     return (
@@ -97,6 +120,15 @@ function HomeSearch(): React.JSX.Element {
                             <input type="radio" name="my-accordion-3" defaultChecked/>
                             <div className="collapse-title text-xl font-medium">Localisations</div>
                             <div className="collapse-content flex flex-col justify-center items-center">
+                                <label className="cursor-pointer label">
+                                    <span className="label-text">(WIP) Chercher autour de moi :</span>
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox checkbox-primary"
+                                        checked={checkedLocation}
+                                        onChange={handleLocationToggle}
+                                    />
+                                </label>
                                 <label className="block mt-2">
                                     <span className="label-text">Département :</span>
                                     <input
