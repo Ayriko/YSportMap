@@ -230,8 +230,8 @@ function HomeSearch(): React.JSX.Element {
                                         onChange={handleFilterChange}
                                     >
                                         <option value="">Sélectionner un type</option>
-                                        <option value="football">Football</option>
-                                        <option value="basketball">Basketball</option>
+                                        <option value="foot">Football</option>
+                                        <option value="basket">Basketball</option>
                                         <option value="rugby">Rugby</option>
                                         <option value="tennis">Tennis</option>
                                         <option value="pétanque">Pétanque</option>
