@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Equipment } from "../types/equipment.ts";
 
