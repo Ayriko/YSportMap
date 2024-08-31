@@ -24,6 +24,7 @@ function HomeSearch(): React.JSX.Element {
     };
     const [filters, setFilters] = useState<Filter>(initialFilters);
 
+    //used to keep track of the state of the checkboxes & fill the filters accordingly because typescript has difficulty with the checked event attribute
     const [checkedAccHandi, setCheckedAccHandi] = useState(false);
     const [checkedTrans, setCheckedTrans] = useState(false);
     const [checkedAccLibre, setCheckedAccLibre] = useState(false);
@@ -32,6 +33,7 @@ function HomeSearch(): React.JSX.Element {
     const [checkedDouche, setCheckedDouche] = useState(false);
     const [checkedLocation, setCheckedLocation] = useState(false);
 
+    //updates the filters based on the user's input.
     const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFilters(prevFilters => ({
@@ -40,6 +42,7 @@ function HomeSearch(): React.JSX.Element {
         }));
     };
 
+    //Navigates to the result route while sending the api data and the filters used.
     const handleSearchClick = async () => {
         try {
             const result = await client.getEquipmentsFiltered(filters, 1);
@@ -53,6 +56,9 @@ function HomeSearch(): React.JSX.Element {
         }
     };
 
+    //toggles the user's location filter.
+    //Fetches the user's current location if enabled.
+    //is currently not used because the api isn't working properly.
     const handleLocationToggle = () => {
         if (checkedLocation) {
             filters.user_location='';

@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
+// The mapContainer from leaflet is a component that will display the map but is stuck to the initial position per default
+// We need to use the following call to change the view of the map dynamically
 function ChangeMapView({ position }: { position: L.LatLng }) {
     const map = useMap();
     useEffect(() => {
@@ -22,11 +24,11 @@ interface MapComponentProps {
     equipment: Equipment;
 }
 
+// Set the default icon for the markers otherwise the default icon is not displayed on vercel deployment
 const DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
 });
-
 L.Marker.prototype.options.icon = DefaultIcon;
 
 function MapComponent({ equipment }: MapComponentProps): React.JSX.Element {

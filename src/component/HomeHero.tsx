@@ -6,6 +6,7 @@ interface HomeHeroProps {
 }
 
 const HomeHero: React.FC<HomeHeroProps> = ({ homeSearchRef }) => {
+    // Scroll to the search section component
     const scrollToSearch = () => {
         homeSearchRef.current?.scrollIntoView({ behavior: 'smooth' });
     };

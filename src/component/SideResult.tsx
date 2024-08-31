@@ -14,19 +14,20 @@ function SideResult({ data, onPageChange }: SideResultProps): React.JSX.Element 
     const navigate = useNavigate();
     const setPositionAtom = useSetRecoilState(positionState);
     const [page, setPage] = useState(1);
-
     const totalPages = Math.ceil(data.total_count / 10);
 
     const handleNavigate = (equip_numero: string) => {
         navigate('/detail', { state: equip_numero });
     };
 
+    // Change the atom in order to dynamically change the position on the map when the mouse hover a card
     const handleMouseEnter = (equip_x: number | null, equip_y: number | null) => {
         if (equip_x != null && equip_y != null && !isNaN(equip_x) && !isNaN(equip_y)) {
             setPositionAtom([equip_y, equip_x]);
         }
     };
 
+    // Function to handle the page change in the child component SideResult and have the useEffect fetch the new data in the parent component
     const handlePageChange = (newPage: number) => {
         if (newPage >= 1 && newPage <= totalPages) {
             setPage(newPage);
@@ -34,6 +35,7 @@ function SideResult({ data, onPageChange }: SideResultProps): React.JSX.Element 
         }
     };
 
+    // logic to generate pagination and display only 5 pages at a time
     const generatePagination = () => {
         const pagination = [];
 

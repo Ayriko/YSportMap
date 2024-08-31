@@ -7,6 +7,7 @@ import HomeSearch from "../component/HomeSearch.tsx";
 const HomePage: React.FC = () => {
     const homeSearchRef = useRef<HTMLDivElement>(null);
 
+    // ref is used to scroll to the search component from the hero component. It's just for style.
     return (
         <div className="relative min-h-screen">
             <Header />
