@@ -7,6 +7,8 @@ import { Equipment } from "../types/equipment.ts";
 import { useRecoilState } from "recoil";
 import { positionState } from "../atoms/positionState.tsx";
 import { useNavigate } from 'react-router-dom';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 function ChangeMapView({ position }: { position: L.LatLng }) {
     const map = useMap();
@@ -19,6 +21,13 @@ function ChangeMapView({ position }: { position: L.LatLng }) {
 interface MapComponentProps {
     equipment: Equipment;
 }
+
+const DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 function MapComponent({ equipment }: MapComponentProps): React.JSX.Element {
     const [positionAtom] = useRecoilState(positionState);
